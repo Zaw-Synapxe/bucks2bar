@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucks2Bar</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Bucks2Bar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./pages/contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    <!--<form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-light" type="submit">Search</button>
+                    </form>-->
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container mt-4">
+        <h1>Welcome to Bucks2Bar</h1>
+        
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter your username">
+            <div id="username-feedback"></div>
+            <!--<small class="form-text text-muted">Username must contain at least 1 capital letter, 1 number, and be at least 8 characters long.</small>-->
+        </div>
+        
+        <!-- Bootstrap Tabs -->
+        <div class="mt-4">
+            <!-- Tab Navigation -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="data-tab" data-bs-toggle="tab" data-bs-target="#data" 
+                    type="button" role="tab" aria-controls="data" aria-selected="true">Data</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart" 
+                    type="button" role="tab" aria-controls="chart" aria-selected="false">Chart</button>
+                </li>
+            </ul>
+            
+            <!-- Tab Content -->
+            <div class="tab-content" id="myTabContent">
+                <!-- Data Tab -->
+                <div class="tab-pane fade show active p-3 border border-top-0 rounded-bottom" id="data" role="tabpanel" aria-labelledby="data-tab">
+                    <h3>Monthly Expense Data</h3>
+                    
+                    <!-- Responsive Row with 2 columns (1 on mobile, 2 on medium and up) -->
+                    <div class="row mt-4">
+                        <!-- January Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2">January</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="january-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="january-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- February Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2 ">February</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="february-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="february-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- March and April Row -->
+                    <div class="row mt-4">
+                        <!-- March Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2">March</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="march-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="march-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- April Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2">April</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="april-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="april-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- May and June Row -->
+                    <div class="row mt-4">
+                        <!-- May Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2">May</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="may-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="may-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- June Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2">June</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="june-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="june-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- July and August Row -->
+                    <div class="row mt-4">
+                        <!-- July Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2">July</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="july-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="july-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- August Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2">August</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="august-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="august-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- September and October Row -->
+                    <div class="row mt-4">
+                        <!-- September Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2">September</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="september-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="september-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- October Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2">October</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="october-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="october-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- November and December Row -->
+                    <div class="row mt-4">
+                        <!-- November Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2">November</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="november-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="november-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- December Column -->
+                        <div class="col-12 col-md-6 mb-4">
+                            <h4 class="p-2">December</h4>
+                            <div class="p-3 border rounded">
+                                <!-- Nested row with income and expenses inputs -->
+                                <div class="row g-3">
+                                    <!-- Income input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Income</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="december-income" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                    <!-- Expenses input -->
+                                    <div class="col-12 col-sm-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">Expenses</span>
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="december-expenses" placeholder="0.00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chart Tab -->
+                <div class="tab-pane fade p-3 border border-top-0 rounded-bottom" id="chart" role="tabpanel" aria-labelledby="chart-tab">
+                    <h3>Data Visualization</h3>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="chart-container" style="position: relative; height:60vh; width:100%">
+                                <canvas id="incomeExpenseChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <button id="updateChartBtn" class="btn btn-primary">Update Chart</button>
+                        </div>
+                    </div>
+
+                    <!-- Bootstrap button with the label "Download" -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <button id="downloadChartBtn" class="btn btn-primary">Download Chart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center mt-4">
+        <p>&copy; 2025 Bucks2Bar. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/income-expanse-chart.js"></script>
+</body>
+</html>
