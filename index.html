@@ -423,6 +423,14 @@
                             <button id="downloadChartBtn" class="btn btn-primary">Download Chart</button>
                         </div>
                     </div>
+
+                    <!-- Add this to the button row in the Chart Tab section of index.html -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <button id="emailChartBtn" class="btn btn-primary">Send Chart by Email</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -439,5 +447,40 @@
     
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/income-expanse-chart.js"></script>
+    <script src="./assets/js/email-service.js"></script>
 </body>
+
+<!-- Add this modal at the bottom of the body section in index.html -->
+<div class="modal fade" id="emailChartModal" tabindex="-1" aria-labelledby="emailChartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="emailChartModalLabel">Send Chart by Email</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="emailChartForm">
+                    <div class="mb-3">
+                        <label for="recipientEmail" class="form-label">Recipient Email</label>
+                        <input type="email" class="form-control" id="recipientEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailSubject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="emailSubject" value="My Financial Chart from Bucks2Bar">
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailMessage" class="form-label">Message</label>
+                        <textarea class="form-control" id="emailMessage" rows="3">Here's my financial chart from Bucks2Bar.</textarea>
+                    </div>
+                </form>
+                <div id="emailStatus" class="alert d-none"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="sendEmailBtn">Send Email</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </html>
