@@ -49,15 +49,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show loading message
         showEmailStatus('Sending email...', 'info');
         
-        // Send data to the server endpoint
+        // Send data to the server endpoint        
         sendToServer(formData);
     }
-      // Function to handle server communication
+    
+    // Function to handle server communication
     function sendToServer(formData) {
+        // Log what we're sending for debugging
+        console.log('Sending form data with keys:', Array.from(formData.keys()));
+        
         // Send data to the server endpoint
         fetch('/api/send-chart-email', {
             method: 'POST',
-            body: formData
+            body: formData,
+            // Don't set Content-Type header, browser will set it with boundary for FormData
         })
         .then(response => {
             if (!response.ok) {
