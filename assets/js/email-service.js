@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function sendChartByEmail() {
         // Get form values
         const recipientEmail = document.getElementById('recipientEmail').value;
-        const emailSubject = document.getElementById('emailSubject').value;
-        const emailMessage = document.getElementById('emailMessage').value;
+        // const emailSubject = document.getElementById('emailSubject').value;
+        // const emailMessage = document.getElementById('emailMessage').value;
         
         // Validate email format
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,60 +35,72 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Get the chart canvas and convert to data URL
+        // Get the chart canvas and convert to data URL with quality optimization
         const canvas = document.getElementById('incomeExpenseChart');
-        const chartDataUrl = canvas.toDataURL('image/png');
         
-        // Create FormData object for the email data
-        const formData = new FormData();
-        formData.append('recipient', recipientEmail);
-        formData.append('subject', emailSubject);
-        formData.append('message', emailMessage);
-        formData.append('chartImage', chartDataUrl);
+        // Using lower quality (0.8) to reduce file size
+        const chartDataUrl = canvas.toDataURL('image/png'); //canvas.toDataURL('image/jpeg', 0.8);
+        
+        // // Create FormData object for the email data
+        // const formData = new FormData();
+        // formData.append('recipient', recipientEmail);
+        // formData.append('subject', emailSubject || 'My Financial Chart from Bucks2Bar');
+        // formData.append('message', emailMessage);
+        // formData.append('chartImage', chartDataUrl);
         
         // Show loading message
         showEmailStatus('Sending email...', 'info');
-        
-        // Send data to the server endpoint        
-        sendToServer(formData);
+        console.log('Sending email...');
+
+        // Send data to the server endpoint
+        //sendToServer(formData);
+        sendToServer(recipientEmail, chartDataUrl);
     }
     
     // Function to handle server communication
-    function sendToServer(formData) {
-        // Log what we're sending for debugging
-        console.log('Sending form data with keys:', Array.from(formData.keys()));
-        
-        // Send data to the server endpoint
-        fetch('/api/send-chart-email', {
-            method: 'POST',
-            body: formData,
-            // Don't set Content-Type header, browser will set it with boundary for FormData
+    //function sendToServer(formData) {
+    function sendToServer(email, image ) {
+        // Show a progress indicator
+        showEmailStatus('Sending email, please wait...', 'info');
+        console.log('Sending email to server...');
+
+        if (email) {
+        fetch("http://localhost:3000/api/send-email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, image  }),
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.success) {
-                showEmailStatus('Email sent successfully!', 'success');
-                
-                // Close modal after delay
-                setTimeout(() => {
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('emailChartModal'));
-                    if (modal) {
-                        modal.hide();
-                    }
-                }, 2000);
-            } else {
-                showEmailStatus(data.error || 'Failed to send email', 'danger');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            showEmailStatus('An error occurred while sending the email', 'danger');
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    showEmailStatus('Email sent successfully!', 'success');
+                    
+                    // Close modal after delay
+                    setTimeout(() => {
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('emailChartModal'));
+                        if (modal) {
+                            modal.hide();
+                        }
+                    }, 2000);
+                } else {
+                    showEmailStatus(data.error || 'Failed to send email', 'danger');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showEmailStatus('An error occurred while sending the email', 'danger');
+            });
+        }
+
+        console.log('call send-chart-email api from server ...');
+
     }
     
     // Helper function to show status messages
